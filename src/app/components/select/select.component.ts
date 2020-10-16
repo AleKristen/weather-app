@@ -1,23 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from './services/weather.service';
+import { WeatherService } from '../../services/weather.service';
 
+interface City {
+  cityName: string;
+  countryCode: string;
+}
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-select',
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.css']
 })
-export class AppComponent implements OnInit {
+export class SelectComponent implements OnInit {
 
-  location = { cityName: 'London', countryCode: 'uk' };
+  selectedValue: string;
   weather;
+
+  cities: City[] = [
+    {cityName: 'Santiago', countryCode: 'Chile'},
+    {cityName: 'Nueva York', countryCode: 'Estados Unidos'},
+    {cityName: 'Caracas', countryCode: 'Venezuela'},
+    {cityName: 'Buenos Aires', countryCode: 'Argentina'}
+  ];
 
   constructor(private weatherService: WeatherService){}
 
-  ngOnInit() {
-    this.getWeather(this.location.cityName, this.location.countryCode);
+  ngOnInit(): void {
+
   }
 
+  prueba(){
+    console.log('funciona');
+
+  }
   getWeather(cityName: string, countryCode: string) {
     this.weatherService
       .getWeather(cityName, countryCode)
@@ -44,6 +59,5 @@ export class AppComponent implements OnInit {
     cityName.focus();
     return false;
   }
-
 
 }
