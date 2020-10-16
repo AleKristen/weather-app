@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class WeatherService {
+export class WeatherSelectService {
 
   apiKey = 'd046421e3b82da4668373a672038f225';
   URL: string = '';
@@ -14,7 +13,7 @@ export class WeatherService {
     this.URL = `http://api.weatherstack.com/current?access_key=${this.apiKey}&query=`
    }
 
-   getWeather(cityName: string, countryCode: string){
-    return this.http.get(`${this.URL}${cityName},${countryCode} `)
+   getWeather(selectedCity: any){
+    return this.http.get(`${this.URL}${selectedCity} `)
    }
 }

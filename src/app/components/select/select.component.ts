@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
+import {WeatherSelectService } from '../../services/weather-select.service';
 
 interface City {
   cityName: string;
@@ -23,19 +23,20 @@ export class SelectComponent implements OnInit {
     {cityName: 'Buenos Aires', countryCode: 'Argentina'}
   ];
 
-  constructor(private weatherService: WeatherService){}
+  constructor(private weatherSelectService: WeatherSelectService){}
 
   ngOnInit(): void {
 
   }
 
-  prueba(){
-    console.log('funciona');
+  // getCityCountry(){
+  //    console.log(this.selectedValue)
+  // }
 
-  }
-  getWeather(cityName: string, countryCode: string) {
-    this.weatherService
-      .getWeather(cityName, countryCode)
+
+  getCity(selectedValue) {
+    this.weatherSelectService
+      .getWeather(selectedValue)
       .subscribe(
         res => {
           console.log(res);
@@ -47,16 +48,13 @@ export class SelectComponent implements OnInit {
       );
   }
 
-  submitCity(cityName: HTMLInputElement, countryCode: HTMLInputElement) {
-    if (cityName.value && countryCode.value) {
-      this.getWeather(cityName.value, countryCode.value);
+  submitCity(selectedValue: HTMLSelectElement) {
+    if (selectedValue.value) {
+      this.getCity(selectedValue.value);
 
-      cityName.value = '';
-      countryCode.value = '';
     } else {
       alert('Por favor, ingrese los datos');
     }
-    cityName.focus();
     return false;
   }
 

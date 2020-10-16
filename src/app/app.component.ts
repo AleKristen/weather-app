@@ -9,7 +9,7 @@ import { WeatherService } from './services/weather.service';
 })
 export class AppComponent implements OnInit {
 
-  location = { cityName: 'London', countryCode: 'uk' };
+  location = { cityName: 'London', countryCode: 'uk'};
   weather;
 
   constructor(private weatherService: WeatherService){}

@@ -2,11 +2,14 @@
   <h4>Clima</h4>
   <mat-form-field appearance="fill">
     <mat-label>Seleccione una ciudad</mat-label>
-    <mat-select [(ngModel)]="selectedValue" name="city" (click)="prueba()">
-      <mat-option *ngFor="let city of cities" [value]="city.cityName" >
+    <mat-select [(ngModel)]="selectedValue" name="city">
+      <mat-option *ngFor="let city of cities" [value]="city.cityName" #name>
         {{city.cityName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <button (click)="getCity()">
+    consutar
+  </button>
   <p> Ciudad: {{selectedValue}} </p>
 </form>
