@@ -13,8 +13,9 @@ interface City {
 })
 export class SelectComponent implements OnInit {
 
-  selectedValue: string;
+  selectedValue: any;
   weather;
+
 
   cities: City[] = [
     {cityName: 'Santiago', countryCode: 'Chile'},
@@ -23,39 +24,46 @@ export class SelectComponent implements OnInit {
     {cityName: 'Buenos Aires', countryCode: 'Argentina'}
   ];
 
-  constructor(private weatherSelectService: WeatherSelectService){}
+  constructor(private weatherSelectService: WeatherSelectService){
+
+  }
 
   ngOnInit(): void {
 
   }
 
-  // getCityCountry(){
-  //    console.log(this.selectedValue)
-  // }
-
-
-  getCity(selectedValue) {
-    this.weatherSelectService
-      .getWeather(selectedValue)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.weather = res;
-        },
-        err => {
-          console.log(err);
-        }
-      );
+  getCity(cityName){
+     console.log('Selectcomponent: selectedValue:',this.selectedValue)
+     this.selectedValue = this.weatherSelectService.getWeather();
+     console.log('cityName:',cityName)
   }
 
-  submitCity(selectedValue: HTMLSelectElement) {
-    if (selectedValue.value) {
-      this.getCity(selectedValue.value);
+  // getCity(cities: any) {
+  //   this.weatherSelectService
+  //   .getWeather(cities.cityName)
+  //   console.log('esto es:',cities.cityName)
+  //  this.weatherSelectService
+  //     .getWeather(selectedValue)
+  //     .subscribe(
+  //       res => {
+  //         console.log(res);
+  //         this.weather = res;
+  //       },
+  //       err => {
+  //         console.log(err);
+  //       }
+  //     );
+  // }
+
+  submitCity(cityName: any) {
+    if (cityName.value) {
+      this.getCity(cityName.value);
 
     } else {
       alert('Por favor, ingrese los datos');
     }
     return false;
   }
+
 
 }

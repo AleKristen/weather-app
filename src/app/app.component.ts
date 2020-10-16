@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
   submitCity(cityName: HTMLInputElement, countryCode: HTMLInputElement) {
     if (cityName.value && countryCode.value) {
       this.getWeather(cityName.value, countryCode.value);
-
       cityName.value = '';
       countryCode.value = '';
     } else {

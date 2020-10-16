@@ -1,14 +1,77 @@
-<app-select></app-select>
+<div class="card cardBanner" style="width: 100%;">
+      <form (submit)="submitCity(cityName, cityCode)">
+        <div class="card-body cardBannerS" style="width: 100%; height: 45%;">
+          <div *ngIf="weather" class="infoCity">
+            <h1>{{weather.location.name}}</h1>
+            <h2>{{weather.location.country}}</h2>
+          </div>
 
-<form (submit)="submitCity(cityName, cityCode)">
-  <input type=text placeholder="Ciudad" #cityName>
-  <input type=text placeholder="País" #cityCode>
-  <button>
-    Obtener clima
-  </button>
+          <div class="formCity">
+            <p>Buscador</p>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default" style="width:80px">Ciudad</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" #cityName>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default" style="width:80px">País</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" #cityCode>
+            </div>
+            <button class="btn btn-info">Obtener clima</button>
+          </div>
+      </div>
+      </form>
+  </div>
 
-<div *ngIf="weather">
-  <p>Temperatura:{{weather.current.temperature}}°C</p>
-</div>
 
-</form>
+
+  <div class="row cardInfo">
+    <div class="col-sm-5 cardTempInfo">
+      <div class="card">
+        <div class="card-body cardTemp" *ngIf="weather">
+          <h3>Clima: {{weather.current.weather_descriptions}}</h3>
+          <h2>{{weather.current.temperature}}°C</h2>
+          <p>Temperatura</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5 cardTempInfo">
+      <div class="card">
+        <div class="card-body cardTempEx" *ngIf="weather">
+          <div class="windS">
+            <div class="wind">
+              <img src="../assets/humedad.png" alt="">
+            </div>
+            <h3>Humedad: {{weather.current.humidity}}%</h3>
+          </div>
+
+          <div class="humidityS">
+            <div class="humidity">
+              <img src="../assets/viento.png" alt="">
+            </div>
+            <h3>Viento: {{weather.current.wind_speed}}km/h</h3>
+          </div>
+
+          <div class="rainS">
+            <div class="rain">
+              <img src="../assets/lluvia.png" alt="">
+            </div>
+            <h3>Prop. precipitaciones: {{weather.current.precip}}%</h3>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- <app-select></app-select> -->
+
+
+
+
+

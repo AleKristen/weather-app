@@ -15,6 +15,7 @@ export class WeatherService {
    }
 
    getWeather(cityName: string, countryCode: string){
+     console.log("prueba",cityName, countryCode);
     return this.http.get(`${this.URL}${cityName},${countryCode} `)
    }
 }
