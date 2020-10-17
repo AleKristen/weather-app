@@ -35,6 +35,10 @@ button{
   width: 45%;
 }
 
+button:focus {
+  outline: none;
+}
+
 h1{
   font-weight: 500;
   font-size: 80px;

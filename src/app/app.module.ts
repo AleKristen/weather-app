@@ -7,9 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
-// Componentes
-import { SelectComponent } from './components/select/select.component';
-
 // Angular Material
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
@@ -17,8 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SelectComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
